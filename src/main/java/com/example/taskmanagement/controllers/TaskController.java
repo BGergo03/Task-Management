@@ -1,7 +1,6 @@
 package com.example.taskmanagement.controllers;
 
 import com.example.taskmanagement.models.Task;
-import com.example.taskmanagement.repositories.TaskRepository;
 import com.example.taskmanagement.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
