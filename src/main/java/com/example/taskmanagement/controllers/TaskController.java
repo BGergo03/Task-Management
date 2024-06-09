@@ -28,4 +28,9 @@ public class TaskController {
     public Task addTask(@RequestBody CreateTask createTask) {
         return taskService.addTask(createTask);
     }
+
+    @DeleteMapping
+    public void deleteTask(@RequestParam long id) {
+        taskService.deleteTaskById(id);
+    }
 }
