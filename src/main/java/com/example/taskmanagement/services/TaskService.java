@@ -12,11 +12,12 @@ import java.util.List;
 public class TaskService {
 
     private final TaskRepository taskRepository;
-    // todo: date provider
+    private final DateProvider dateProvider;
 
     @Autowired
-    public TaskService(TaskRepository taskRepository) {
+    public TaskService(TaskRepository taskRepository, DateProvider dateProvider) {
         this.taskRepository = taskRepository;
+        this.dateProvider = dateProvider;
     }
 
     public List<Task> getTasks() {
@@ -24,9 +25,10 @@ public class TaskService {
     }
 
     public Task addTask(CreateTask createTask) {
-        Task newTask = new Task(
-                createTask.getTitle(),
-                createTask.getDescription());
+        Task newTask = new Task();
+        newTask.setTitle(createTask.getTitle());
+        newTask.setDescription(createTask.getDescription());
+        newTask.setCreatedAt(dateProvider.getCurrentDate());
         return taskRepository.save(newTask);
     }
 
