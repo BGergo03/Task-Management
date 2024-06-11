@@ -1,11 +1,11 @@
 package com.example.taskmanagement.dtos;
 
-public class CreateTask {
+public class TaskDto {
     private String title;
 
     private String description;
 
-    public CreateTask(String title, String description) {
+    public TaskDto(String title, String description) {
         this.title = title;
         this.description = description;
     }

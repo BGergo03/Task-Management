@@ -1,6 +1,6 @@
 package com.example.taskmanagement.controllers;
 
-import com.example.taskmanagement.dtos.CreateTask;
+import com.example.taskmanagement.dtos.TaskDto;
 import com.example.taskmanagement.models.Task;
 import com.example.taskmanagement.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +25,8 @@ public class TaskController {
     }
 
     @PostMapping
-    public Task addTask(@RequestBody CreateTask createTask) {
-        return taskService.addTask(createTask);
+    public Task addTask(@RequestBody TaskDto taskDto) {
+        return taskService.addTask(taskDto);
     }
 
     @DeleteMapping

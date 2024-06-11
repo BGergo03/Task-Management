@@ -1,6 +1,6 @@
 package com.example.taskmanagement.services;
 
-import com.example.taskmanagement.dtos.CreateTask;
+import com.example.taskmanagement.dtos.TaskDto;
 import com.example.taskmanagement.models.Task;
 import com.example.taskmanagement.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +24,10 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    public Task addTask(CreateTask createTask) {
+    public Task addTask(TaskDto taskDto) {
         Task newTask = new Task();
-        newTask.setTitle(createTask.getTitle());
-        newTask.setDescription(createTask.getDescription());
+        newTask.setTitle(taskDto.getTitle());
+        newTask.setDescription(taskDto.getDescription());
         newTask.setCreatedAt(dateProvider.getCurrentDate());
         return taskRepository.save(newTask);
     }
