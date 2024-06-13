@@ -20,14 +20,22 @@ public class TaskServiceImpl implements TaskService {
         this.dateProvider = dateProvider;
     }
 
+    @Override
     public Task getTaskById(long id) {
         return taskRepository.findById(id).orElse(null);
     }
 
+    @Override
+    public Task getTaskByTitle(String title) {
+        return taskRepository.findByTitle(title).orElse(null);
+    }
+
+    @Override
     public List<Task> getTasks() {
         return taskRepository.findAll();
     }
 
+    @Override
     public Task addTask(TaskDto taskDto) {
         Task newTask = new Task();
         newTask.setTitle(taskDto.getTitle());
@@ -36,10 +44,11 @@ public class TaskServiceImpl implements TaskService {
         return taskRepository.save(newTask);
     }
 
+    @Override
     public Task deleteTaskById(long id) {
         Task taskToBeDeleted = taskRepository.findById(id).orElse(null);
         if (taskToBeDeleted != null) {
-            taskRepository.delete(taskToBeDeleted);
+            taskRepository.deleteById(id);
         }
         return taskToBeDeleted;
     }

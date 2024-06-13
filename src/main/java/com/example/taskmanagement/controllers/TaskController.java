@@ -3,7 +3,6 @@ package com.example.taskmanagement.controllers;
 import com.example.taskmanagement.dtos.TaskDto;
 import com.example.taskmanagement.models.Task;
 import com.example.taskmanagement.services.TaskService;
-import com.example.taskmanagement.services.TaskServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +17,23 @@ public class TaskController {
     private final TaskService taskService;
 
     @Autowired
-    public TaskController(TaskServiceImpl taskService) {
+    public TaskController(TaskService taskService) {
         this.taskService = taskService;
     }
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<Task> getTaskById(@PathVariable("id") long id) {
         Task result = taskService.getTaskById(id);
+        if (result == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/{title}")
+    public ResponseEntity<Task> getTaskByTitle(@PathVariable("title") String title) {
+        Task result = taskService.getTaskByTitle(title);
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

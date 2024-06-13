@@ -14,4 +14,6 @@ public interface TaskService {
     Task addTask(TaskDto taskDto);
 
     Task deleteTaskById(long id);
+
+    Task getTaskByTitle(String title);
 }
