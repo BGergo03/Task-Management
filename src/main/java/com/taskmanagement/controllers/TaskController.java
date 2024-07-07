@@ -1,8 +1,8 @@
-package com.example.taskmanagement.controllers;
+package com.taskmanagement.controllers;
 
-import com.example.taskmanagement.dtos.TaskDto;
-import com.example.taskmanagement.models.Task;
-import com.example.taskmanagement.services.TaskService;
+import com.taskmanagement.dtos.TaskDto;
+import com.taskmanagement.models.Task;
+import com.taskmanagement.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "/id/{id}")
     public ResponseEntity<Task> getTaskById(@PathVariable("id") long id) {
         Task result = taskService.getTaskById(id);
         if (result == null) {
@@ -31,7 +31,7 @@ public class TaskController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping(path = "/{title}")
+    @GetMapping(path = "/title/{title}")
     public ResponseEntity<Task> getTaskByTitle(@PathVariable("title") String title) {
         Task result = taskService.getTaskByTitle(title);
         if (result == null) {

@@ -1,4 +1,4 @@
-package com.example.taskmanagement.services;
+package com.taskmanagement.services;
 
 import org.springframework.stereotype.Service;
 

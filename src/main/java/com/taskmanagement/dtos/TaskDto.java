@@ -1,4 +1,4 @@
-package com.example.taskmanagement.dtos;
+package com.taskmanagement.dtos;
 
 public class TaskDto {
     private String title;

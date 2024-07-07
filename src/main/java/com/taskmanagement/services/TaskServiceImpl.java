@@ -1,8 +1,8 @@
-package com.example.taskmanagement.services;
+package com.taskmanagement.services;
 
-import com.example.taskmanagement.dtos.TaskDto;
-import com.example.taskmanagement.models.Task;
-import com.example.taskmanagement.repositories.TaskRepository;
+import com.taskmanagement.dtos.TaskDto;
+import com.taskmanagement.models.Task;
+import com.taskmanagement.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +27,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task getTaskByTitle(String title) {
-        return taskRepository.findByTitle(title).orElse(null);
+        return taskRepository.findFirstByTitle(title).orElse(null);
     }
 
     @Override

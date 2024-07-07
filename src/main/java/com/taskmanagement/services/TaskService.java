@@ -1,7 +1,7 @@
-package com.example.taskmanagement.services;
+package com.taskmanagement.services;
 
-import com.example.taskmanagement.dtos.TaskDto;
-import com.example.taskmanagement.models.Task;
+import com.taskmanagement.dtos.TaskDto;
+import com.taskmanagement.models.Task;
 
 import java.util.List;
 

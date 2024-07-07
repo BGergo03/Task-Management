@@ -1,4 +1,4 @@
-package com.example.taskmanagement.models;
+package com.taskmanagement.models;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -80,5 +80,32 @@ public class Task {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+
+        if (obj == null)
+            return false;
+
+        if (getClass() != obj.getClass())
+            return false;
+
+        final Task other = (Task) obj;
+        if (title == null) {
+            return other.getTitle() == null;
+        }
+        else if (!title.equals(other.getTitle()))
+            return false;
+
+        if (description == null) {
+            return other.getDescription() == null;
+        }
+        else if (!description.equals(other.getDescription()))
+            return false;
+
+        return true;
     }
 }
